@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120605011138) do
+ActiveRecord::Schema.define(:version => 20120605014351) do
 
   create_table "products", :force => true do |t|
     t.string   "lcbo_id"
@@ -22,11 +22,11 @@ ActiveRecord::Schema.define(:version => 20120605011138) do
     t.string   "region"
     t.string   "price"
     t.integer  "rating"
-    t.string   "description"
+    t.text     "description",     :limit => 255
     t.string   "byline"
     t.string   "byline_link"
-    t.datetime "created_at",      :null => false
-    t.datetime "updated_at",      :null => false
+    t.datetime "created_at",                     :null => false
+    t.datetime "updated_at",                     :null => false
   end
 
   create_table "reviews", :force => true do |t|
@@ -36,6 +36,7 @@ ActiveRecord::Schema.define(:version => 20120605011138) do
     t.integer  "lcbo_id"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+    t.integer  "rating"
     t.integer  "product_id"
   end
 

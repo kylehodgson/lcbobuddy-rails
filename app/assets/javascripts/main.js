@@ -15,7 +15,8 @@ $(document).ready(function () {
         }
         
         // Go get listings
-        var listingsHandler = jQuery.getJSON("http://www.lcbobuddy.com/listings.php?callback=?", handle_listings);
+        // var listingsHandler = jQuery.getJSON("http://www.lcbobuddy.com/listings.php?callback=?", handle_listings);
+        var listingsHandler = jQuery.getJSON("http://lcbobuddy.heroku.com/products.json", handle_listings);
         listingsHandler.error(get_local_data);
     }
 
