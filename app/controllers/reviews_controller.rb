@@ -3,9 +3,9 @@ class ReviewsController < ApplicationController
 	def create
 		@review = Review.new(params[:rating])
 		if @review.save
-			render 'create.json.jbuilder'
+			render 'create.json'
 		else
-			respond
+			render 'errors.json'
 		end
 	end
 
