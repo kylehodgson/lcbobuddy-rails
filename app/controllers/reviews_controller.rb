@@ -2,7 +2,7 @@ class ReviewsController < ApplicationController
 
 	# some comment
 	def create
-		@review = Review.new(params[:rating])
+		@review = Review.new(params[:review])
 		if @review.save
 			render 'create.json'
 		else
