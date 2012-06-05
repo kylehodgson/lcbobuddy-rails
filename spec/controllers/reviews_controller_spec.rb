@@ -8,7 +8,7 @@ describe ReviewsController do
 		{
 			:email 		=> 'sample@me.com',
 			:lcbo_id	=> 12345,
-			:score		=> 55,
+			:rating		=> 55,
 			:comment	=> 'This bottle gets me high! Recommend it!'
 		}
 	}
@@ -19,15 +19,21 @@ describe ReviewsController do
 	end
 
 	it "should not let the review to be saved if lcbo_id is non numeric" do
-	  pending
+		valid_rating['lcbo_id'] = 'some string'
+	  post :create, rating: valid_rating
+	  JSON.parse(response.body).should == { 'status' => 'FAILED', 'message' => 'Something went wrong with your submission!'}
 	end
 
 	it "should not let the review to be saved if score is non numeric" do
-	  pending
+	 	valid_rating['rating'] = 'some string'
+	  post :create, rating: valid_rating
+	  JSON.parse(response.body).should == { 'status' => 'FAILED', 'message' => 'Something went wrong with your submission!'}
 	end
 
 	it "should not let the review to be saved if score is beyond hundred" do
-	  pending
+	  valid_rating['rating'] = 122
+	  post :create, rating: valid_rating
+	  JSON.parse(response.body).should == { 'status' => 'FAILED', 'message' => 'Something went wrong with your submission!'}
 	end
 
 end
