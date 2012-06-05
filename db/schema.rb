@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120604234733) do
+ActiveRecord::Schema.define(:version => 20120605011138) do
 
   create_table "products", :force => true do |t|
     t.string   "lcbo_id"
@@ -27,6 +27,16 @@ ActiveRecord::Schema.define(:version => 20120604234733) do
     t.string   "byline_link"
     t.datetime "created_at",      :null => false
     t.datetime "updated_at",      :null => false
+  end
+
+  create_table "reviews", :force => true do |t|
+    t.string   "email"
+    t.integer  "score"
+    t.text     "comment"
+    t.integer  "lcbo_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+    t.integer  "product_id"
   end
 
 end
