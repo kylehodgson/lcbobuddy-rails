@@ -1,5 +1,6 @@
 class ReviewsController < ApplicationController
 
+	# some comment
 	def create
 		@review = Review.new(params[:rating])
 		if @review.save
