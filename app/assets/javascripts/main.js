@@ -1,6 +1,6 @@
 $(document).ready(function () {
 
-    //pimp_my_app();
+    pimp_my_app();
     cart_init();
 
     if (typeof window.winesnob === "undefined" || typeof window.winesnob.listings === "undefined") {
@@ -11,7 +11,7 @@ $(document).ready(function () {
         
         //Check if browser supports W3C Geolocation API
         if (navigator.geolocation) {
-            //navigator.geolocation.getCurrentPosition(geoLocateSuccessFunction);
+            navigator.geolocation.getCurrentPosition(geoLocateSuccessFunction);
         }
         
         // Go get listings
@@ -564,46 +564,55 @@ function pimp_my_app() {
     var promotion = Object();
     promotion.platforms = Array();
     
-    var bb = Object();
-    bb.name = "BlackBerry";
-    bb.app_url = "https://build.phonegap.com/apps/74129/download/blackberry";
-    bb.promotion_title = "BlackBerry user?";
-    bb.promotion_message = "BlackBerry users can download our app! Click here to get started: <a data-role='button' href='" + bb.app_url + "' >Install Now</a>";
-    bb.user_agent_pattern = "blackberry";
-    
-    promotion.platforms.push(bb);
+//    var bb = Object();
+//    bb.name = "BlackBerry";
+//    bb.app_url = "https://build.phonegap.com/apps/74129/download/blackberry";
+//    bb.promotion_title = "BlackBerry user?";
+//    bb.promotion_message = "BlackBerry users can download our app! Click here to get started: <a data-role='button' href='" + bb.app_url + "' >Install Now</a>";
+//    bb.user_agent_pattern = "blackberry";
+//    
+//    promotion.platforms.push(bb);
     
     var android = Object();
     android.name = "Android";
-    android.app_url = "http://www.lcbobuddy.com/packages/LCBOBuddy-debug.apk";
+    android.app_url = "http://www.lcbobuddy.com/packages/WineWithinReach-debug.apk";
     android.promotion_title = "Android user?";
     android.promotion_message = "Android users can download our app! Click here to get started: <a data-role='button' href='" + android.app_url + "' >Install Now</a>";
     android.user_agent_pattern = "android";
 
     promotion.platforms.push(android);
 
-//    var chrome = Object();
-//    chrome.name = "Chrome";
-//    chrome.app_url = "https://build.phonegap.com/apps/74129/download/android";
-//    chrome.promotion_title = "Chrome user?";
-//    chrome.promotion_message = "Chrome users can download our app! Click here to get started: <a data-role='button' href='" + android.app_url + "' >Install Now</a>";
-//    chrome.user_agent_pattern = "chrome";
+    var ipad = Object();
+    ipad.name = "iPad";
+    ipad.app_url = "http://itunes.apple.com/ca/app/wine-within-reach/id511743779?mt=8";
+    ipad.promotion_title = "iPad user?";
+    ipad.promotion_message = "iPad users can download our native app from the app store! Click here to get started: <a data-role='button' href='" + ipad.app_url + "' >Install Now</a>";
+    ipad.user_agent_pattern = "ipad";
 
-//    promotion.platforms.push(chrome);
+    promotion.platforms.push(ipad);
+
+    var iphone = Object();
+    iphone.name = "iPhone";
+    iphone.app_url = "http://itunes.apple.com/ca/app/wine-within-reach/id511743779?mt=8";
+    iphone.promotion_title = "iPhone user?";
+    iphone.promotion_message = "iPhone users can download our native app from the app store! Click here to get started: <a data-role='button' href='" + iphone.app_url + "' >Install Now</a>";
+    iphone.user_agent_pattern = "iphone";
+
+    promotion.platforms.push(iphone);
     
     promotion.pimp = function () {
         var ua = navigator.userAgent.toLowerCase();
         var is_our_website = document.URL.toLowerCase().indexOf("lcbobuddy") > -1;
         for (var idx in this.platforms) {
             if ( is_our_website) {
-                $("#info_box").click(function () {
+                $("#info_box_dismiss").click(function () {
                     $("#info_box").html("");
                 });
             }
             var platform = promotion.platforms[idx];
             var is_our_platform = ua.indexOf(platform.user_agent_pattern) > -1;
             if (is_our_platform && is_our_website) {
-                $("#info_box").html($(info_box(platform.promotion_title, platform.promotion_message)));
+                $("#info_box").html($(info_box(platform.promotion_title, platform.promotion_message))).trigger('create');
             }
         }
     };
@@ -620,7 +629,7 @@ function info_box(title,message) {
     markup += "<a href='#' id='info_box_dismiss' data-role='button' data-icon='delete' data-iconpos='notext' data-corners='true' ";
     markup += "data-shadow='true' data-iconshadow='true' data-inline='false' data-wrapperels='span' title='Button' ";
     markup += "class='ui-btn ui-btn-up-e ui-btn-icon-notext ui-btn-corner-all ui-shadow'><span class='ui-btn-inner ui-btn-corner-all ui-corner-top ui-corner-bottom'>";
-    markup += "<span class='ui-btn-text'>Button</span><span class='ui-icon ui-icon-delete ui-icon-shadow'></span></span></a></div>";
+    markup += "<span class='ui-icon ui-icon-delete ui-icon-shadow'></span></span></a></div>";
     markup += "<p style='clear:both; font-size:85%; margin-bottom:8px;'>" + message + "</p>";
     markup += "</div>";
 
