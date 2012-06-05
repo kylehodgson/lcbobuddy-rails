@@ -28,6 +28,7 @@ gem 'jquery-rails'
 group :test, :development do
   gem 'pry'
   gem 'rspec-rails'
+  gem 'shoulda-matchers'
   gem 'capybara'
   gem 'guard-rspec'
   gem 'growl_notify'
