@@ -1,1 +1,8 @@
 == LCBOBuddy Rails
+
+== Contributors
+
+* Kyle
+* Jasdeep @jasdeepsingh[http://twitter.com/jasdeepsingh]
+* Jason
+* Stacey
