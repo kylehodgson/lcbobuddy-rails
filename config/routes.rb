@@ -3,7 +3,7 @@ Lcbobuddy::Application.routes.draw do
   root to: 'pages#home'
   resources :products, :only => [:index]
   resources :reviews, :only => [:create]
-  
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
